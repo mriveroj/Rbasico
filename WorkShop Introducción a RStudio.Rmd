@@ -1,0 +1,184 @@
+---
+title: |
+    ![](analytics.png){width=0.8in} ![](RStudio.png){width=0.75in} 
+author: "**Workshop: Introducción a RStudio**"
+date: "**Analytics Research Lab**"
+output: pdf_document
+---
+## **Introducción**
+
+La presente guía fue desarrollada como una introducción a RStudio. Para empezar debemos crear un espacio de trabajo dando clic en File–>new file crear un r script, este es un archivo con la extensión .r que permite escribir y guardar lineas de código. 
+
+\begin{figure}[h]
+    \centering
+    \includegraphics[width=0.8\textwidth]{File.png}
+    \caption{Creación de script}
+    \label{fig:}
+\end{figure}
+
+\textbf{Entorno de RStudio}
+
+
+\begin{figure}[h]
+    \centering
+    \includegraphics[width=0.8\textwidth]{Entorno R.png}
+    \caption{Entorno de Rstudio}
+    \label{fig:}
+\end{figure}
+
+
+• **Ventana 1:** Esta ventana generalmente llamada *script* se encuentra el espacio para editar el código. Para ejecutar los códigos seleccionamos las líneas de código y hacemos ```ctrl + enter``` o hacemos clic en el boton *run*. En este espacio también se abren pestañas para visualizar objetos de R cuando hacemos clic en la ventana del **entorno R**.
+
+
+• **Ventana 2:** Conocida como *environment* o *entorno de trabajo*, en este espacio se muestra el conjunto de objetos que R tiene cargados en memoria. Esto incluye conjuntos de datos, variables, vectores, funciones, etc.
+
+• **Ventana 3:** Esta ventana tiene varias pestañas. La pestaña (i) *Files* permite ver los archivos en la carpeta de trabajo; la pestaña (ii) *Plots* permite visualizar los gráficos que se generen; la pestaña (iii) *Packages* permite ver los paquetes descargados y guardados en el disco duro así como gestionar su instalación o actualización; la pestaña (iv) *Help* permite acceder a la ayuda de R integrada (CRAN - Comprehensive R Archive Network), que es página oficial del software que ofrece diferentes recursos para el programa: manuales para el usuario, cursos on line, información general, descarga de paquetes, información de los paquetes instalados, etc.; y la pestaña (v) *Viewer* contiene los resultados producidos por R que corresponden a otro tipo de objetos, como ficheros html. 
+
+
+• **Ventana 4:** Esta ventana hace referencia a la *consola* y muestra la salida del código que ejecuta. También se puede escribrir código de R en este directamente. La consola corresponde a lo que sería el software R en su versión básica.
+
+**Principales operadores de asignación**
+
+Al momento de crear un nuevo objeto es necesario hacer uso de los operadores de asignación. Se acostumbra a crear un objeto con el objetivo de almacenar la información en él.A continuación se presentan las diferentes formas de asignar información a un objeto: 
+
+```{r 1}
+Objeto1 <- 1
+Objeto2 = 2
+3 -> Objeto3 
+```
+
+
+
+## **Operaciones básicas en RStudio**
+
+
+En RStudio se pueden realizar operaciones básicas como suma, resta, multiplicación y división con los simbolos +,-,*,/, %/% y %%. Tal y como se muestra a  continuación:
+
+### Operador binario para sumar (+)
+```{r 2}
+5+10
+```
+
+### Operador binario para restar (-)
+```{r 3}
+105-99
+```
+
+### Operador binario para multiplicar (*)
+```{r 4}
+5*5
+```
+
+### Operador binario para potencia (^)
+```{r 5}
+5^2
+```
+
+### Operador binario para dividir (/)
+```{r 6}
+10/2
+```
+
+### Operador binario para obtener el residuo en una división (%%)
+```{r 7}
+10%%2
+```
+
+### Operador binario para obtener el cociente en una división (Número entero) (%/%)
+```{r 8}
+10%/%2
+```
+
+## **Tipos de objetos en RStudio**
+
+En RStudio podemos encontrar varios tipos de objetos que permiten que el usuario pueda almacenar la información para realizar procedimientos estadísticos y gráficos. Dentro de esos objetos encontramos los vectores, matrices y arrays, listas, data frame y funciones.
+
+**Vectores**
+
+Los  vectores son arreglos ordenados en los cuales se puede almacenar información de tipo numérico (variable cuantitativa), alfanumérico (variable cualitativa) o lógico (TRUE o FALSE), pero no se pueden mezclar.
+
+La función de R para crear un vector es ```c()``` (concatenar). El argumento de la función es la información a almacenar. 
+
+```{r 9}
+#Vector numérico
+edad <- c(15, 19, 13, NA, 20)
+#Vector lógico
+deporte <- c(TRUE, TRUE, NA, FALSE, TRUE)
+#Vector alfanumérico
+comic.fav <- c(NA, 'Superman', 'Batman', NA, 'Batman')
+```
+Si se deseas observar la información almacenada en cada uno de los vectores, se debe escribir en la consola o script de R el nombre de uno de los objetos y luego se presiona la botón run o ctrl+enter. A continuación se muestra el contenido de cada vector:
+
+```{r 10}
+edad 
+deporte 
+comic.fav 
+```
+
+
+## **Gráficas Paquete Básico**
+
+
+```{r 11, echo=FALSE}
+data("swiss")
+datos <- swiss
+```
+En el paquete base de R se pueden generar de forma ágil gráficas para análisis exploratorio, algunas de ellas
+son:
+
+• **Histograma**: ```hist()```
+
+```{r 12, fig.align="center", fig.width=3, fig.height=3}
+hist(datos$Education, col="light blue", main= "Histograma", xlab = "Educación", ylab = "Frecuencia")
+```
+
+• **Diagrama de dispersión**: ```plot()```
+```{r 13, fig.align="center", fig.width=3, fig.height=3}
+plot(datos$Agriculture, col="blue",main= "Diagrama de dispersión",
+xlab = "Educación",ylab = "Frecuencia")
+```
+
+• **Diagrama de caja y bigotes**: ```boxplot()```
+```{r 14, fig.align="center", fig.width=3, fig.height=3}
+boxplot(datos$Fertility, main= "Diagrama de caja", col= "light blue")
+```
+
+
+**Problemas sugeridos**
+
+• Crea un vector  numérico con la siguiente información [1,24,23,8]
+
+• Crea un vector alfanumérico con el nombre de tus 5 series favoritas.
+
+• Teniendo en cuenta los siguientes vectores, resuelve en RStudio: 
+```{r }
+a <- c(1,2,3)
+b <- c(2,0,1)
+```
+• a+b
+
+• a-b
+
+• a*b
+
+• a/b
+
+• a^b
+
+• 7%/%3
+
+• 7%%3
+
+• Consultar sobre los otros tipos de objetos de R.
+
+\begin{center}
+\textbf{Bibliografía recomendada}
+ \end{center}
+
+ **Libro Manual de R:** https://fhernanb.github.io/Manual-de-R/
+
+**Libro R4ds:** https://es.r4ds.hadley.nz
+
+**R Markdown the definitive guide:** https://bookdown.org/yihui/rmarkdown/
+
+
